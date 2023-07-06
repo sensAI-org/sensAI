@@ -80,15 +80,17 @@ def download_file(name):
 
 @app.route('/stats/<name>')
 def stats(name):
-    input_file = open (f"./uploads/{name}", "r")
+    input_file = open (f"./output/{name}", "r")
     data = input_file.readlines()
-    total = len(data)
+    total = 0
     positive = 0
     negative = 0
     for line in data:
-        if line[-8:] == "POSITIVE":
+        if line[-9:] == "POSITIVE\n":
             positive += 1
-        else:
+            total += 1 
+        elif line[-9:] == "NEGATIVE\n":
             negative += 1
+            total += 1
     input_file.close()
     return render_template("stats.html", name=name, positive=int((positive/total) * 100), negative=int((negative/total) * 100))

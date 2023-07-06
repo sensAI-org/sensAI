@@ -25,7 +25,7 @@
         document.getElementById("current").innerHTML = "Progress: " + get.status + "%." 
         if (get.status == 100) {
             console.log("It made it here you neek");
-            document.getElementById("progress").innerHTML += "<a href='/output/{{name}}'>Done! Download file here.</a><br>"
+            document.getElementById("progress").innerHTML += "<a href='/output/{{name}}'>Done! Download file here.</a><br><a href='/stats/{{name}}'>See the stats here</a>"
         }
         else {
             timeout = setTimeout(getStatus, 1000);
