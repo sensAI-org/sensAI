@@ -163,7 +163,7 @@
     <section>
         <div>
             <div class="dropdown">
-                <button class="dropbtn"><img class="dropbtn" src="https://raw.githubusercontent.com/sensAI-org/sensAI/e4e7761200700395a4c4264048256560a0ce1a34/templates/logo.svg?token=ATHDNYX4XSSDTTJDMAZC76DEU3E7I" alt=""></button>
+                <button class="dropbtn"><img class="dropbtn" src="./templates/logo.svg" alt=""></button>
                 <div class="dropdown-content">
                     <a href="#">How to use</a>
                     <a href="#">FAQs</a>
@@ -178,9 +178,13 @@
                     <input type="text" name="text" id="myInput" class="inputbox" placeholder="Ask sensAI" class="input">
                     <input type="submit" id="myBtn">
                 </form>
-                <p id="polarity">
-                    {{label}}
-                </p>
+                <h1 color="white">
+                    {{text}}
+                </h1>
+                <h2 id="polarity">
+                    {{percent_positive}}<br>
+                    {{percent_negative}}<br>
+                </h2>
             </div>
 
         </div>
