@@ -10,5 +10,3 @@ def homepage():
         evalution = sensai.sentiment_analysis(text)
         label = "Polarity: " + evalution[0]["label"]
         return render_template('demo.html', label=label)
-    label = ""
-    return render_template('demo.html')
