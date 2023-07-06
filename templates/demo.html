@@ -179,9 +179,13 @@
 
         <div class="hero">
             <div class="container">
-                <span id="myInput" class="inputbox" contenteditable="true" class="text-box"
-                    aria-placeholder="Ask sensAI"></span>
-                <button id="myBtn" onclick="javascript:alert('Hello World!')">Button</button>
+                <form method="POST">
+                    <input type="text" name="text" id="myInput" class="inputbox" class="text-box">
+                    <input type="submit" id="myBtn">
+                </form>
+                <p id="polarity">
+                    {{label}}
+                </p>    
             </div>
 
         </div>
