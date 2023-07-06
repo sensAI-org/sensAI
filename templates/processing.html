@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Progress Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #progress {
+            width: 200px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #d000ffb0, #5900ffb0, #ff00eeb0);;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        #progress-text {
+            text-align: center;
+        }
+
+        .progress-links a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .download-button{
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1 id="current">Status For Downloading file.</h1>
-    <div id="progress">
+    <span style="z-index: -1; box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
+            alt="background-image"
+            src="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg"
+            decoding="async" data-nimg="fill"
+            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"
+            sizes="100vw"
+            srcset="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 640w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 750w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 828w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1080w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1200w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1920w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 2048w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 3840w">
+    </span>
+    <div class="container">
+        <h1 id="current">Processing {{name}}</h1>
+        <div id="progress">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="progress-text"></div>
     </div>
 </body>
 <script>
@@ -21,18 +98,22 @@
         } catch (e) {
             console.error("Error: ", e)
         }
-        console.log(get.status);
-        document.getElementById("current").innerHTML = "Progress: " + get.status + "%." 
+
+        const progressBar = document.getElementById("progress-bar");
+        const progressText = document.getElementById("progress-text");
+
+        progressText.textContent = "Progress: " + get.status + "%";
+        progressBar.style.width = get.status + "%";
+
         if (get.status == 100) {
-            console.log("It made it here you neek");
-            document.getElementById("progress").innerHTML += "<a href='/output/{{name}}'>Done! Download file here.</a><br><a href='/stats/{{name}}'>See the stats here</a>"
-        }
-        else {
+            clearTimeout(timeout);
+            progressText.innerHTML = "<div class='progress-links'><a style='margin-top: 25px;' href='/output/{{name}}'>File uploaded successfully. <div> <div style='background-color: rgba(255, 255, 255, 0.2); color: white; padding: 16px 32px; border-radius: 10px; cursor: pointer; transition: background-color 0.3s ease; position: relative; overflow: hidden; text-align: center; margin: 20px;'> Download here </div> </a><br><a style='background-color: rgba(255, 255, 255, 0.2); color: white; padding: 16px 32px; border-radius: 10px; cursor: pointer; transition: background-color 0.3s ease; position: relative; overflow: hidden; text-align: center; margin: 20px;' href='/stats/{{name}}'>See the stats here</a></div></div>";
+        } else {
             timeout = setTimeout(getStatus, 1000);
         }
-
     }
 
-    getStatus(); 
+    getStatus();
 </script>
+
 </html>

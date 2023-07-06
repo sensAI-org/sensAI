@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result Page</title>
+    <style>
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>{{name}}</h1>
-    <h2>Positive: {{positive}}</h2>
-    <h2>Negative: {{negative}}</h2>
-    <h2><a href="/output/{{name}}">Download your file here</a></h2>
+    <span
+        style="z-index: -1; box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
+            alt="background-image"
+            src="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg"
+            decoding="async" data-nimg="fill"
+            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"
+            sizes="100vw"
+            srcset="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 640w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 750w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 828w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1080w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1200w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1920w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 2048w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 3840w">
+    </span>
+    <div class="container">
+        <h1>{{name}}</h1>
+        <h2>Positive: {{positive}} %</h2>
+        <h2>Negative: {{negative}} %</h2>
+        <h2><a class="button" href="/output/{{name}}">Download your file here</a></h2>
+    </div>
 </body>
+
 </html>
