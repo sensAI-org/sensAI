@@ -13,7 +13,7 @@
         font-family: 'Comfortaa', cursive;
         background-color: black;
         margin: auto;
-        max-width: 100%;
+
         color: azure;
 
     }
@@ -36,18 +36,18 @@
         border: none;
         border-radius: 10px;
         height: 70px;
-        min-width: 20%;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: rgba(255, 255, 255, 0.37);
+        background: linear-gradient(45deg, #d000ffb0, #5900ffb0, #ff00eeb0);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(50px);
         -webkit-backdrop-filter: blur(20px);
         color: white;
-        font-size: 30;
+        font-size: 30px;
+        width: 500px;
         outline: none;
         padding-left: 20px;
         padding-right: 20px;
@@ -69,10 +69,6 @@
         content: '';
     }
 
-    .container {
-        min-width: 35%;
-
-    }
 
     /* Dropdown Button */
     .dropbtn {
@@ -167,25 +163,24 @@
     <section>
         <div>
             <div class="dropdown">
-                <button class="dropbtn"><img class="dropbtn" src="./logo.png" alt=""></button>
+                <button class="dropbtn"><img class="dropbtn" src="./logo.svg" alt=""></button>
                 <div class="dropdown-content">
                     <a href="#">How to use</a>
                     <a href="#">FAQs</a>
                     <a href="#">The Team</a>
                 </div>
             </div>
-
         </div>
 
         <div class="hero">
             <div class="container">
                 <form method="POST">
-                    <input type="text" name="text" id="myInput" class="inputbox" class="text-box">
+                    <input type="text" name="text" id="myInput" class="inputbox" placeholder="Ask sensAI" class="input">
                     <input type="submit" id="myBtn">
                 </form>
                 <p id="polarity">
                     {{label}}
-                </p>    
+                </p>
             </div>
 
         </div>
@@ -201,6 +196,13 @@
                 event.preventDefault();
                 document.getElementById("myBtn").click();
             }
+        });
+    </script>
+    <script>
+        let el = document.querySelector(".input-wrap .input");
+        let widthMachine = document.querySelector(".inputbox");
+        el.addEventListener("keyup", () => {
+            widthMachine.innerHTML = el.value;
         });
     </script>
 </body>
