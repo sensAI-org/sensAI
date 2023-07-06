@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="current">Status For Downloading file.</h1>
+    <div id="progress">
+    </div>
+</body>
+<script>
+    var timeout;
+    async function getStatus() {
+        let get;
+
+        try {
+            const res = await fetch("/status");
+            get = await res.json();
+        } catch (e) {
+            console.error("Error: ", e)
+        }
+        console.log(get.status);
+        document.getElementById("current").innerHTML = "Progress: " + get.status + "%." 
+        if (get.status == 100) {
+            console.log("It made it here you neek");
+            document.getElementById("progress").innerHTML += "<a href='/output/{{name}}'>Done! Download file here.</a><br>"
+        }
+        else {
+            timeout = setTimeout(getStatus, 1000);
+        }
+
+    }
+
+    getStatus(); 
+</script>
+</html>

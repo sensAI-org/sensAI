@@ -1,0 +1,202 @@
+<head>
+    <meta charSet="utf-8" />
+    <title>SensAI</title>
+    <meta name="description" content="sensAI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="next-head-count" content="4" />
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+    body {
+        font-family: 'Comfortaa', cursive;
+        background-color: black;
+        margin: auto;
+        max-width: 100%;
+        color: azure;
+
+    }
+
+    .hero {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputbox {
+        background-color: aliceblue;
+        border: none;
+        border-radius: 10px;
+        height: 70px;
+        min-width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.37);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        color: white;
+        font-size: 30;
+        outline: none;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+
+    span.inputbox[contenteditable] {
+        display: flex;
+    }
+
+    span.inputbox[contenteditable]:empty::before {
+        content: 'Ask sensAI';
+        display: flex;
+        opacity: 0.7;
+    }
+
+    span.inputbox[contenteditable]:empty:focus::before {
+        content: '';
+    }
+
+    .container {
+        min-width: 35%;
+
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+        position: relative;
+        width: 205px;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 30px;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: absolute;
+        display: inline-block;
+        text-decoration: none;
+        background-color: rgba(65, 0, 0, 0);
+        border-radius: 20px;
+
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: relative;
+
+        min-width: 160px;
+        background-color: rgba(240, 248, 255, 0.423);
+        border-radius: 25px;
+        z-index: 1;
+        margin-left: 45px;
+        padding: 10px;
+        text-align: centers;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: rgba(255, 255, 255, 0.999);
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        margin: 10px;
+        background-color: rgba(240, 248, 255, 0.423);
+        border-radius: 15px;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: rgba(228, 114, 243, 0.755);
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e4100;
+    }
+
+    .submit {
+        margin-top: 50px;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: blueviolet;
+        color: white;
+        opacity: 1;
+        z-index: 2;
+    }
+
+    #myBtn {
+        display: none;
+    }
+</style>
+
+
+<body>
+    <span
+        style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
+            alt="background-image"
+            src="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg"
+            decoding="async" data-nimg="fill"
+            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"
+            sizes="100vw"
+            srcset="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 640w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 750w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 828w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1080w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1200w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1920w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 2048w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 3840w">
+    </span>
+    <section>
+        <div>
+            <div class="dropdown">
+                <button class="dropbtn"><img class="dropbtn" src="./logo.png" alt=""></button>
+                <div class="dropdown-content">
+                    <a href="#">How to use</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">The Team</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero">
+            <div class="container">
+                <span id="myInput" class="inputbox" contenteditable="true" class="text-box"
+                    aria-placeholder="Ask sensAI"></span>
+                <button id="myBtn" onclick="javascript:alert('Hello World!')">Button</button>
+            </div>
+
+        </div>
+
+    </section>
+    <section>
+
+    </section>
+    <script>
+        var input = document.getElementById("myInput");
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("myBtn").click();
+            }
+        });
+    </script>
+</body>

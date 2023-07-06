@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <style>
+
+        body {
+
+            background-color: #000;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            position: relative;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+
+        .upload-wrapper {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100%;
+
+            z-index: 1;
+
+        }
+
+
+
+        .upload-container {
+
+            width: 300px;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, 0.2);
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+
+        .upload-icon {
+
+            font-size: 64px;
+
+            color: rgba(255, 255, 255, 0.6);
+
+            text-align: center;
+
+        }
+
+
+
+        .upload-label {
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #fff;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 16px;
+
+        }
+
+
+
+
+        .upload-button {
+
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 10px;
+
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+
+            border: none;
+
+            border-radius: 5px;
+
+            color: #fff;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s ease;
+
+        }
+
+
+
+        .upload-button:hover {
+
+            background-color: rgba(255, 255, 255, 0.5);
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <span
+
+        style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
+
+            alt="background-image"
+
+            src="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg"
+
+            decoding="async" data-nimg="fill"
+
+            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"
+
+            sizes="100vw"
+
+            srcset="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 640w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 750w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 828w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1080w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1200w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1920w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 2048w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 3840w">
+
+    </span>
+
+    <div class="upload-wrapper">
+
+        <div class="upload-container">
+
+            <div class="upload-icon">
+
+                <i class="fas fa-cloud-upload-alt"></i>
+
+            </div>
+
+            <div class="upload-label">Click to select files</div>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <!-- <input type="file" class="file-input" id="fileInput" name="file">
+
+                <button class="upload-button" onclick="fileInput.click()">Upload Files</button> -->
+                <input type="file" name="file" class="file-input" id="fileInput">
+                <input type="submit" value="Upload" class="upload-button">
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://kit.fontawesome.com/xxxxxxxxxx.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
