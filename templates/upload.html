@@ -1,186 +1,190 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
         body {
-
-            background-color: #000;
-
+            font-family: 'Comfortaa', cursive;
+            background: #000;
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             height: 100vh;
-
-            overflow: hidden;
-
-            position: relative;
-
-            margin: 0;
-
-            padding: 0;
-
         }
 
-
-
-        .upload-wrapper {
-
+        .container {
             display: flex;
-
-            justify-content: center;
-
+            flex-direction: column;
             align-items: center;
-
-            height: 100%;
-
-            z-index: 1;
-
+            padding: 40px;
+            background: linear-gradient(45deg, #d000ffb0, #5900ffb0, #ff00eeb0);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
 
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        .upload-container {
+        .file-upload__input {
+            display: none;
+        }
 
-            width: 300px;
-
-            padding: 20px;
-
+        .file-upload__label {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
             border-radius: 10px;
-
-            background: rgba(255, 255, 255, 0.2);
-
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-        }
-
-
-
-        .upload-icon {
-
-            font-size: 64px;
-
-            color: rgba(255, 255, 255, 0.6);
-
-            text-align: center;
-
-        }
-
-
-
-        .upload-label {
-
-            margin-top: 20px;
-
-            text-align: center;
-
-            color: #fff;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 16px;
-
-        }
-
-
-
-
-        .upload-button {
-
-            width: 100%;
-
-            margin-top: 20px;
-
-            padding: 10px;
-
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
-
-            border: none;
-
-            border-radius: 5px;
-
-            color: #fff;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 14px;
-
-            font-weight: bold;
-
             cursor: pointer;
-
             transition: background-color 0.3s ease;
-
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-
-
-        .upload-button:hover {
-
-            background-color: rgba(255, 255, 255, 0.5);
-
+        .file-upload__label::before {
+            font-family: 'FontAwesome';
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 24px;
+            opacity: 0.7;
         }
 
+        .file-upload__label span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .file-upload__label::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .file-upload__label:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .file-upload__label:hover::after {
+            opacity: 1;
+        }
+
+        .file-upload__drag-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload__drag-area:hover {
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .file-upload__text {
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .file-upload__submit {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            margin-top: 20px;
+            border: none;
+        }
     </style>
-
 </head>
 
 <body>
-
     <span
-
-        style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
-
+        style="z-index: -1; box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
             alt="background-image"
-
             src="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg"
-
             decoding="async" data-nimg="fill"
-
             style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"
-
             sizes="100vw"
-
             srcset="https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 640w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 750w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 828w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1080w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1200w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 1920w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 2048w, https://res.cloudinary.com/aurity/image/upload/v1664869961/gradient_oval_background_7f5fbbfc85.svg 3840w">
-
     </span>
-
-    <div class="upload-wrapper">
-
-        <div class="upload-container">
-
-            <div class="upload-icon">
-
-                <i class="fas fa-cloud-upload-alt"></i>
-
+    <div class="container">
+        <h1>Upload File</h1>
+        <form method="POST" enctype="multipart/form-data" class="file-upload">
+            <label for="file" class="file-upload__label">
+                <input type="file" name="file" id="file" class="file-upload__input" onchange="updateFileName(this)">
+                <span id="file-name">Select a file</span>
+            </label>
+            <div class="file-upload__drag-area" id="file-upload__input">
+                <span class="file-upload__text">Drag and drop your file here</span>
             </div>
-
-            <div class="upload-label">Click to select files</div>
-
-            <form method="POST" enctype="multipart/form-data">
-
-                <!-- <input type="file" class="file-input" id="fileInput" name="file">
-
-                <button class="upload-button" onclick="fileInput.click()">Upload Files</button> -->
-                <input type="file" name="file" class="file-input" id="fileInput">
-                <input type="submit" value="Upload" class="upload-button">
-            </form>
-
-        </div>
-
+            <input type="submit" value="Upload" class="file-upload__submit">
+        </form>
     </div>
+    <script>
+        const dragArea = document.getElementById('dragArea');
+        const fileUploadInput = document.getElementById('file');
+        const fileNameSpan = document.getElementById('file-name');
 
+        dragArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragArea.classList.add('file-upload__drag-area--active');
+        });
 
+        dragArea.addEventListener('dragleave', () => {
+            dragArea.classList.remove('file-upload__drag-area--active');
+        });
 
-    <script src="https://kit.fontawesome.com/xxxxxxxxxx.js" crossorigin="anonymous"></script>
+        dragArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragArea.classList.remove('file-upload__drag-area--active');
+            const file = e.dataTransfer.files[0];
+            fileUploadInput.files = file;
+            updateFileName(fileUploadInput);
+        });
 
+        function updateFileName(input) {
+            if (input.files.length > 0) {
+                fileNameSpan.textContent = input.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'Select a file';
+            }
+        }
+    </script>
 </body>
 
 </html>
-
