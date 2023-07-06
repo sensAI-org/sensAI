@@ -2,3 +2,4 @@ Flask==2.2.5
 progress==1.6
 transformers==4.30.2
 Werkzeug==2.2.3
+TensorFlow==2.13.0
