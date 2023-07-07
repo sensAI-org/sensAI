@@ -2,9 +2,11 @@ import os
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from threading import Thread
+from waitress import serve
 import csv
 import json
 import sensai
+
 
 UPLOAD_FOLDER = './uploads'
 OUTPUT_FOLDER = './output'
@@ -94,3 +96,6 @@ def stats(name):
             total += 1
     input_file.close()
     return render_template("stats.html", name=name, positive=int((positive/total) * 100), negative=int((negative/total) * 100))
+
+serve(app, host="0.0.0.0", port=8080)
+print("this is runnign")
